@@ -1,0 +1,39 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E4F9F5;
+    margin: 0;
+    padding: 0;
+    color: #40514E;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section h2 {
+    color: #30E3CA;
+    margin-bottom: 10px;
+}
+
+a {
+    color: #11999E;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+}

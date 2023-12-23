@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #E4F9F5;
+            margin: 0;
+        }
+        #content {
+    margin-top: px; /* Adjust the margin-top value based on your navigation bar's height */
+    position: relative;
+    bottom: 100px;
+}
+
+        nav {
+            width: 100%;
+            background-color: #11999E;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .container {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            border-radius: 6px;
+            padding: 30px;
+            margin: 0 15px;
+            background-color: #fff;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container header {
+            position: relative;
+            font-size: 24px;
+            font-weight: 600;
+            color: #40514E;
+        }
+
+        .container header::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            height: 3px;
+            width: 27px;
+            border-radius: 8px;
+            background-color: #30E3CA;
+        }
+
+        .container form {
+            position: relative;
+            margin-top: 16px;
+            min-height: 490px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+        
+        .container form .form {
+            position: absolute;
+            background-color: #fff;
+            transition: 0.3s ease;
+        }
+
+        .container form .form.second {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(100%);
+        }
+
+        form.secActive .form.second {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(0);
+        }
+
+        form.secActive .form.first {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(-100%);
+        }
+
+        .container form .title {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            margin: 6px 0;
+            color: #333;
+        }
+
+        .container form .fields {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        form .fields .input-field {
+            display: flex;
+            width: calc(100% / 3 - 15px);
+            flex-direction: column;
+            margin: 4px 0;
+        }
+
+        .dashboard-box-container {
+    max-width: 400px; /* Set the maximum width of the box */
+    margin: 20px auto; /* Adjusted margin for spacing between the boxes and nav */
+    background-color: #30E3CA; /* Background color of the box */
+    padding: 20px; /* Padding inside the box */
+    border-radius: 10px; /* Border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+}
+
+.dashboard-box {
+    text-align: center; /* Center the content inside the box */
+    color: #40514E; /* Text color */
+}
+
+.dashboard-box h3 {
+    font-size: 20px; /* Adjust the font size of the heading */
+    margin-bottom: 10px; /* Add some bottom margin for spacing */
+}
+
+
+        .input-field label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #2e2e2e;
+        }
+
+        .input-field input,
+        select {
+            outline: none;
+            font-size: 14px;
+            font-weight: 400;
+            color: #333;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+            padding: 0 15px;
+            height: 42px;
+            margin: 8px 0;
+        }
+        .dashboard-box-container {
+    max-width: 400px; /* Set the maximum width of the box */
+    margin: 0 auto; /* Center the box horizontally */
+    background-color: #30E3CA; /* Background color of the box */
+    padding: 20px; /* Padding inside the box */
+    border-radius: 10px; /* Border radius for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle lift */
+}
+
+.dashboard-box {
+    text-align: center; /* Center the content inside the box */
+    color: #40514E; /* Text color */
+}
+
+.dashboard-box h3 {
+    font-size: 20px; /* Adjust the font size of the heading */
+    margin-bottom: 10px; /* Add some bottom margin for spacing */
+}
+
+
+        .input-field input :focus,
+        .input-field select:focus {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+        }
+
+        .input-field select,
+        .input-field input[type="date"] {
+            color: #707070;
+        }
+
+        .input-field input[type="date"]:valid {
+            color: #333;
+        }
+        nav {
+    width: 100%;
+    background-color: #40514E;
+    padding: 15px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+        .container form button,
+        .backBtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
+            max-width: 200px;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #fff;
+            border-radius: 5px;
+            margin: 25px 0;
+            background-color: #11999E;
+            transition: all 0.3s linear;
+            cursor: pointer;
+        }
+
+        .container form .btnText {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        form button:hover {
+            background-color: #11999E;
+        }
+
+        form button i,
+        form .backBtn i {
+            margin: 0 6px;
+        }
+
+        form .backBtn i {
+            transform: rotate(180deg);
+        }
+        .dashboard-box-container {
+    max-width: 400px;
+    margin: 20px auto; /* Adjusted margin for spacing between the boxes and nav */
+    background-color: #30E3CA;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add margin-bottom to create space between boxes */
+}
+
+.dashboard-box {
+    text-align: center;
+    color: #40514E;
+}
+
+.dashboard-box h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+
+        form .buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        form .buttons button,
+        .backBtn {
+            margin-right: 14px;
+        }
+        @media (max-width: 750px) {
+            .container form {
+                overflow-y: scroll;
+            }
+
+            .container form::-webkit-scrollbar {
+                display: none;
+            }
+
+            form .fields .input-field {
+                width: calc(100% / 2 - 15px);
+            }
+        }
+
+        @media (max-width: 550px) {
+            form .fields .input-field {
+                width: 100%;
+            }
+        }
+        /* ... (Existing styles remain unchanged) ... */
+
+        form button:hover {
+            background-color: #11999E;
+        }
+    </style>
+    <script>
+           // ... (existing JavaScript code) ...
+           document.addEventListener("DOMContentLoaded", function () {
+    fetchActs();
+});
+
+function fetchActs() {
+    fetch("api.php")
+        .then(response => response.json())
+        .then(data => displayActs(data))
+        .catch(error => console.error("Error fetching acts:", error));
+}
+
+function displayActs(acts) {
+    const actsContainer = document.getElementById("actsContainer");
+
+    // Clear previous acts
+    actsContainer.innerHTML = "";
+
+    // Display acts
+    acts.forEach(act => {
+        const actElement = document.createElement("div");
+        actElement.innerHTML = `
+            <div class="act">
+                <h2>${act.title}</h2>
+                <p>${act.description}</p>
+                <p><strong>Date:</strong> ${act.date}</p>
+                <p><strong>Category:</strong> ${act.category}</p>
+                <p><strong>Ministry:</strong> ${act.ministry}</p>
+                <p><strong>State:</strong> ${act.state}</p>
+                <p><strong>Ministry Selection:</strong> ${act.ministry_selection}</p>
+            </div>
+        `;
+        actsContainer.appendChild(actElement);
+    });
+}
+
+        // Function to dynamically generate state options
+        function generateStateOptions() {
+            const states = [
+                'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat',
+                'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra',
+                'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu',
+                'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal'
+            ];
+
+
+            return states.map(state => `<option value="${state}">${state}</option>`).join('');
+        }
+function generateCategoryOptions() {
+    const Category = [
+    'Choose Category :', 'None', 'Commercial', 'EHS', 'Finance & Taxation', 'General', 'Industry Specific', 'Labour', 'Secretarial'
+    ]
+
+    return Category.map(Category => `<option value="${Category}">${Category}</option>`).join('');
+};
+        // Function to dynamically generate ministry options
+        function generateMinistryOptions() {
+            const ministries = [
+                'International Council', 'International Standard', 'Ministry of Agriculture and Farmers Welfare',
+                'Ministry of Ayush', 'Ministry of Chemicals and Fertilizers', 'Ministry of Civil Aviation',
+                'Ministry of Coal', 'Ministry of Power', 'Ministry of Commerce and Industry', 'Ministry of Communications',
+                'Ministry of Consumer Affairs, Food And Public Distribution', 'Ministry of Corporate Affairs', 'Ministry of Culture',
+                'Ministry of Defence', 'Ministry of Earth Sciences', 'Ministry of Education', 'Ministry of Electronics and Information Technology',
+                'Ministry of Environment, Forest and Climate Change', 'Ministry of Finance', 'Ministry of Fisheries, Animal Husbandry and Diary',
+                'Ministry of Food Processing Industries', 'Ministry of Food and Drug Administration, Government of', 'Ministry of Health and Family Welfare',
+                'Ministry of Heavy Industries', 'Ministry of Home Affairs', 'Ministry of Housing and Urban Affairs', 'Ministry of Human Resource Development',
+                'Ministry of Human Resource Development, Government of India', 'Ministry of Information and Broadcasting', 'Ministry of Jal Shakti',
+                'Ministry of Labour and Employment', 'Ministry of Labour and Employment, Government of India', 'Ministry of Law and Justice',
+                'Ministry of Mines', 'Ministry of New and Renewable Energy', 'Ministry of Ports', 'Ministry of Power', 'Ministry of Power, Government of India',
+                'Ministry of Road Transport and Highways', 'Ministry of Rural Development', 'Ministry of Science and Technology', 'Ministry of Shipping',
+                'Ministry of Skill Development and Entrepreneurship', 'Ministry of Social Justice and Empowerment', 'Ministry of Statistics and Programme Implementation',
+                'Ministry of Steel', 'Ministry of Textiles', 'Ministry of Women and Child Development', 'National Commission for Indian System for Medicine',
+                'National Payments Corporation of India', 'Ministry of Petroleum and Natural Gas', 'Ministry of Information and Broadcasting',
+                'Ministry of Shipping and Waterways'
+            ];
+
+            return ministries.map(ministry => `<option value="${ministry}">${ministry}</option>`).join('');
+        }
+
+        // Function to add a new act
+        function addNewAct() {
+            const pdfFile = document.getElementById('pdfUpload').files[0];
+            // Your logic to add a new act with the PDF file
+            console.log('Adding new act with PDF file:', pdfFile);
+        }
+
+        // Function to add a new legal update
+        function addNewLegalUpdate() {
+            const pdfFile = document.getElementById('pdfUpload').files[0];
+            // Your logic to add a new legal update with the PDF file
+            console.log('Adding new legal update with PDF file:', pdfFile);
+        }
+
+        // Function to display acts in the Manage Acts section
+        function displayActs() {
+            // Your logic to display acts
+        }
+
+        // Function to show the dashboard content
+        function showDashboard() {
+            document.getElementById('content').innerHTML = `
+           
+           
+            <div class="dashboard" style="text-align: center;margin-top:200px">
+    <h2>Welcome to Compliance Nexus Admin Dashboard</h2>
+    <div class="dash">
+        <div class="dashboard-box-container" style="margin-top: 20px;">
+            <div class="dashboard-box">
+                <h3>Upload New Acts</h3>
+                <button style="background-color: #11999E; color: #fff; padding: 15px 30px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer;" class="btn btn-primary" onclick="showNewActsInterface()">New Acts</button>
+            </div>
+        </div>
+        <div class="dashboard-box-container">
+            <div class="dashboard-box">
+                <h3>Upload New Legal Updates</h3>
+                <button style="background-color: #11999E; color: #fff; padding: 15px 30px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer;" class="btn btn-primary" onclick="showNewLegalUpdateInterface()">New Legal Update</button>
+            </div>
+        </div>
+        <div class="dashboard-box-container">
+            <div class="dashboard-box">
+                <h3>Upload New Tender</h3>
+                <button style="background-color: #11999E; color: #fff; padding: 15px 30px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer;" class="btn btn-primary" onclick="showNewActsInterface()">New Tender</button>
+            </div>
+        </div>
+        <div class="dashboard-box-container">
+            <div class="dashboard-box">
+                <h3>Show Tender</h3>
+                <button style="background-color: #11999E; color: #fff; padding: 15px 30px; font-size: 18px; border: none; border-radius: 10px; cursor: pointer;" class="btn btn-primary" onclick="showNewActsInterface()">Show</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+            `;
+        }
+
+        // Function to show the new acts interface
+        function showNewActsInterface() {
+            document.getElementById('content').innerHTML = `
+                <div class="new-form" id="new-act-interface">
+                    <h2>Add New Act</h2>
+                    <form id="new-act-form" style="margin-top: 200px;">
+                        <div class="form-group">
+                            <label for="act-title">Title:</label>
+                            <input type="text" id="act-title" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+    <label for="act-category">Category:</label>
+    <select id="act-category-selection" class="form-control">
+        ${generateCategoryOptions()}
+    </select>
+</div>
+
+                        
+                       <div class="form-group">
+    <label for="act-ministry-selection">Ministry Selection:</label>
+    <select id="act-ministry-selection" class="form-control">
+        ${generateMinistryOptions()}
+    </select>
+</div>                   <div class="form-group">
+                            <label for="act-state">State Selection:</label>
+                            <select id="act-state" class="form-control">
+                                ${generateStateOptions()}
+                            </select>
+                        </div>
+                     
+
+                        <div class="form-group">
+                            <label for="act-date">Date:</label>
+                            <input type="date" id="act-date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="act-description">Description:</label>
+                            <textarea id="act-description" class="form-control" rows="4"></textarea>
+                        </div>
+                      
+                     
+                        <div class="input-group">
+    <label for="pdfUpload" style="margin-top:30px;color: #11999E;">Upload PDF:</label>
+    <input type="file" id="pdfUpload" name="pdfUpload" style="background-color: #11999E; color: #fff; padding: 10px; border: none; margin-top: 20px ; border-radius: 5px; cursor: pointer;">
+</div>
+
+                        </div>
+                        <button type="button" onclick="addNewAct()" style="background-color: #11999E; margin-top: 20px;color: #fff; padding: 15px 30px; font-size: 18px; border: none; border-radius: 59px; cursor: pointer;">Add Act</button>
+
+                    </form>
+                </div>
+            `;
+        }
+
+        // Function to show the new legal update interface
+        function showNewLegalUpdateInterface() {
+            document.getElementById('content').innerHTML = `
+                <div class="new-form" id="new-legal-update-interface">
+                    <h2>Add New Legal Update</h2>
+                    <form id="new-act-form" style="margin-top: 200px;">
+                        <div class="form-group">
+                            <label for="act-title">Title:</label>
+                            <input type="text" id="act-title" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+    <label for="act-category">Category:</label>
+    <select id="act-category-selection" class="form-control">
+        ${generateCategoryOptions()}
+    </select>
+</div>
+
+                       <div class="form-group">
+    <label for="act-ministry-selection">Ministry Selection:</label>
+    <select id="act-ministry-selection" class="form-control">
+        ${generateMinistryOptions()}
+    </select>
+</div>                      
+                        <div class="form-group">
+                            <label for="act-state">State Selection:</label>
+                            <select id="act-state" class="form-control">
+                                ${generateStateOptions()}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="act-date">Date:</label>
+                            <input type="date" id="act-date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="act-description">Description:</label>
+                            <textarea id="act-description" class="form-control" rows="4"></textarea>
+                        </div>
+                        
+                     
+                        <div class="input-group">
+    <label for="pdfUpload" style="margin-top:30px;color: #11999E;">Upload PDF:</label>
+    <input type="file" id="pdfUpload" name="pdfUpload" style="background-color: #11999E; color: #fff; padding: 10px; border: none; margin-top: 20px ; border-radius: 5px; cursor: pointer;">
+</div>
+
+                        </div>
+                        <button type="button" onclick="addNewAct()" style="background-color: #11999E; margin-top: 20px;color: #fff; padding: 15px 30px; font-size: 18px; border: none; border-radius: 59px; cursor: pointer;">Add Act</button>
+
+                    </form>
+                </div>
+            `;
+        }
+    
+        // ... (existing JavaScript code) ...
+    </script>
+</head>
+
+<body>
+
+    <!-- Your HTML body content goes here -->
+    <nav style="display: flex; justify-content: center; background-color: #40514E; padding: 15px 0;">
+        <a href="#" onclick="showDashboard()" style="color: #fff; text-decoration: none; margin: 0 15px; font-size: 18px;" onmouseover="this.style.color='#30E3CA'" onmouseout="this.style.color='#fff'">Dashboard</a>
+        <a href="#" onclick="showNewActsInterface()" style="color: #fff; text-decoration: none; margin: 0 15px; font-size: 18px;" onmouseover="this.style.color='#30E3CA'" onmouseout="this.style.color='#fff'">New Acts</a>
+        <a href="#" onclick="showNewLegalUpdateInterface()" style="color: #fff; text-decoration: none; margin: 0 15px; font-size: 18px;" onmouseover="this.style.color='#30E3CA'" onmouseout="this.style.color='#fff'">New Legal Update</a>
+    </nav>
+    
+
+    <!-- Example usage: -->
+    <div id="content">
+        <!-- Initially, you might want to show the dashboard -->
+        <script>
+            // Show the dashboard when the page loads
+            showDashboard();
+        </script>
+    </div>
+</body>
+
+</html>

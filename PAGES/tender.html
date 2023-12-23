@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tender Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .tender {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        .pdfButton {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #11999E;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+
+        #searchBar {
+            margin-bottom: 20px;
+        }
+
+        /* Color codes for tender boxes */
+        .tender:nth-child(odd) {
+            background-color: #E4F9F5;
+        }
+
+        .tender:nth-child(even) {
+            background-color: #30E3CA;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="searchBar">
+        <label for="search">Search: </label>
+        <input type="text" id="search" oninput="filterTenders()">
+    </div>
+
+    <!-- Tender 1 -->
+    <div class="tender" data-industry="Defense" data-ministry="Ministry of Defense" data-description="Procurement of advanced military equipment">
+        <h2>Tender 1</h2>
+        <p>Industry: Defense</p>
+        <p>Ministry: Ministry of Defense</p>
+        <p>Description: Procurement of advanced military equipment</p>
+        <a href="./Tendernotice_1.pdf" target="_blank" class="pdfButton">Open PDF</a>
+    </div>
+
+    <!-- Tender 2 -->
+    <div class="tender" data-industry="Tech and Finance" data-ministry="Ministry of Home Affairs" data-description="Installation of security system">
+        <h2>Tender 2</h2>
+        <p>Industry: Tech and Finance</p>
+        <p>Ministry: Ministry of Home Affairs</p>
+        <p>Description: Installation of security system</p>
+        <a href="./tender2.pdf" target="_blank" class="pdfButton">Open PDF</a>
+    </div>
+    <div class="tender">
+        <h2>Tender 3</h2>
+        <p>Industry: govt </p>
+        <p>Ministry: Ministry of railway </p>
+        <p>Description: railway related constructions </p>
+        <a href="./tender3.pdf" target="_blank" class="pdfButton">Open PDF</a>
+    </div>   
+    
+    <div class="tender">
+        <h2>Tender 4</h2>
+        <p>Industry: govt </p>
+        <p>Ministry: pwd</p>
+        <p>Description: construction of broken wall near AIIMS ,Bhuwaneshwar </p>
+        <a href="./tender4.pdf" target="_blank" class="pdfButton">Open PDF</a>
+    </div>  
+    
+    <div class="tender">
+        <h2>Tender 5</h2>
+        <p>Industry: govt /tourism </p>
+        <p>Ministry: Ministry of tourism </p>
+        <p>Description: recruitment for swadesh darshan shceme 2.0</p>
+        <a href="./tender5.pdf" target="_blank" class="pdfButton">Open PDF</a>
+    </div>
+
+    <!-- Add more tenders with similar data attributes -->
+
+    <script>
+        function filterTenders() {
+            const searchInput = document.getElementById('search').value.toLowerCase();
+            const tenders = document.querySelectorAll('.tender');
+
+            tenders.forEach(tender => {
+                const tenderText = tender.innerText.toLowerCase();
+                const isVisible = tenderText.includes(searchInput);
+                tender.style.display = isVisible ? 'block' : 'none';
+            });
+        }
+    </script>
+</body>
+
+</html>

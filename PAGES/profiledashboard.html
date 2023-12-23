@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attractive Profile Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #E4F9F5; /* Light Mint */
+            color: #40514E; /* Grayish Blue */
+        }
+
+        header {
+            background-color: #30E3CA; /* Turquoise Green */
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position:relative;
+        }
+
+        header img {
+            width: 145px; /* Adjust the width as needed */
+            height: auto;
+            border-radius: 5px;
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 20px auto;
+            justify-content: space-between;
+        }
+
+        .sidebar {
+            flex: 0;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .sidebar nav {
+            margin-top: 20px;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #11999E; /* Deep Teal */
+        }
+
+        .profile,
+        .dashboard,
+        .compliance {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-left: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .profile img {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .dashboard,
+        .compliance {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .latest-news-container {
+            height: 100%; /* Make the container square */
+            overflow: auto;
+        }
+
+        .latest-news {
+            list-style: none;
+            padding: 0;
+        }
+
+        .latest-news li {
+            margin-bottom: 10px;
+        }
+
+        .latest-news a {
+            color: #11999E; /* Deep Teal */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .latest-news a:hover {
+            color: #30E3CA; /* Hover Turquoise Green */
+        }
+
+        .click-here-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: #11999E; /* Deep Teal */
+            color: #fff;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .click-here-btn:hover {
+            background-color: #30E3CA; /* Hover Turquoise Green */
+        }
+
+        .upload-section {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn {
+            border: 2px solid #11999E; /* Deep Teal */
+            color: #11999E; /* Deep Teal */
+            background-color: #E4F9F5; /* Light Mint */
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+        }
+
+        .upload-btn-wrapper .custom-btn {
+            border: none;
+            color: #fff;
+            background-color: #11999E; /* Deep Teal */
+            padding: 8px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .upload-btn-wrapper .custom-btn:hover {
+            background-color: #30E3CA; /* Hover Turquoise Green */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="https://powermin.gov.in/" target="_blank">
+            <img src="./Ministry_of_Power_India.svg" alt="Ministry of Power Logo">
+        </a>
+        <h1>Profile Dashboard</h1>
+        <img src="./Azadi-Ka-Amrit-Mahotsav-Logo.png" alt="Azadi Ka Amrit Mahotsav">
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="nav">
+                <nav>
+                    <a href="#" class="nav-link">Dashboard</a>
+                    <a href="#" class="nav-link">Compliance History</a>
+                    <a href="#" class="nav-link">Messages</a>
+                    <a href="#" class="nav-link">Logout</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="profile">
+            <img src="profile (1).png" alt="User Profile">
+            <h2>User Name</h2>
+            <p>Email: user@example.com</p>
+            <p>Location: City, Country</p>
+
+            <div class="upload-section">
+                <h3>Upload Documents</h3>
+                <div class="upload-btn-wrapper">
+                    <button class="btn">Choose File</button>
+                    <input type="file" name="document" accept=".pdf, .doc, .docx">
+                </div>
+                <br>
+                <input type="submit" value="Upload" class="custom-btn">
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <h2>Latest Updates</h2>
+            <div class="latest-news-container">
+                <ul class="latest-news">
+                    <li><a href="https://powermin.gov.in/en/content/electricity-act-2003">Ministry of Power announces new initiatives for renewable energy.</a></li>
+                    <li><a href="https://powermin.gov.in/en/content/electricity-act-2003">Power sector reforms to improve efficiency and reliability.</a></li>
+                    <li><a href="https://powermin.gov.in/en/content/electricity-act-2003">Upcoming events in the power industry.</a></li>
+                    <li><a href="https://powermin.gov.in/en/content/electricity-act-2003">Government's focus on clean and sustainable energy sources.</a></li>
+                    <li><a href="https://powermin.gov.in/en/content/electricity-act-2003">Power consumption trends and projections for the next year.</a></li>
+                </ul>
+            </div>
+            <a href="#" class="click-here-btn">Click Here</a>
+        </div>
+
+        <div class="compliance">
+            <h2>Compliance History and Status</h2>
+            <img src="./712593.png" alt="Compliance Image" width="250">
+            <a href="#" class="click-here-btn">Click Here</a>
+        </div>
+    </div>
+</body>
+</html>
